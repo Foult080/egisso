@@ -1,0 +1,19 @@
+{
+  "name": "kkrit-egisso",
+  "version": "1.0.0",
+  "description": "program to add data to egisso",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kkrit",
+    "egisso"
+  ],
+  "author": "foult080",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^8.2.0",
+    "xml-js": "^1.6.11",
+  }
+}
