@@ -4,7 +4,12 @@
   "description": "program to add data to egisso",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Foult080/egisso.git"
   },
   "keywords": [
     "kkrit",
@@ -13,7 +18,12 @@
   "author": "foult080",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.27.0",
     "uuid": "^8.2.0",
     "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
