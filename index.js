@@ -32,65 +32,71 @@ const App = () => {
     },
   };
 
-  const fact = {
-    "ns2:oszCode": "5709.000001",
-    "ns2:mszReceiver": {
-      "ns3:SNILS": "13951805880",
-      "ns4:FamilyName": "Иванов",
-      "ns4:FirstName": "Виктор",
-      "ns4:Patronymic": "Юрьевич",
-      "ns3:Gender": "Male",
-      "ns3:BirthDate": "2000-03-09+04:00",
-    },
-    "ns2:lmszId": "40f20235-5039-48fc-9971-6807bcaba920",
-    "ns2:categoryId": "a84f5dc6-1940-437a-b7f2-e60c64de1661",
-    "ns2:decisionDate": "2020-05-28+03:00",
-    "ns2:dateStart": "2020-06-08+03:00",
-    "ns2:needsCriteria": {
-      "ns2:usingSign": "false",
-    },
-    "ns2:assignmentInfo": {
-      "ns2:monetaryForm": {
-        "ns2:amount": "10162,00",
+  const elements = [
+    {
+      fact: {
+        "ns2:oszCode": "5709.000001",
+        "ns2:mszReceiver": {
+          "ns3:SNILS": "13951805880",
+          "ns4:FamilyName": "Иванов",
+          "ns4:FirstName": "Виктор",
+          "ns4:Patronymic": "Юрьевич",
+          "ns3:Gender": "Male",
+          "ns3:BirthDate": "2000-03-09+04:00",
+        },
+        "ns2:lmszId": "40f20235-5039-48fc-9971-6807bcaba920",
+        "ns2:categoryId": "a84f5dc6-1940-437a-b7f2-e60c64de1661",
+        "ns2:decisionDate": "2020-05-28+03:00",
+        "ns2:dateStart": "2020-06-08+03:00",
+        "ns2:needsCriteria": {
+          "ns2:usingSign": "false",
+        },
+        "ns2:assignmentInfo": {
+          "ns2:monetaryForm": {
+            "ns2:amount": "10162,00",
+          },
+        },
+        uuid: "ffd3d2bd-d939-4c25-8ad0-549d496d2b3d",
       },
     },
-    uuid: "ffd3d2bd-d939-4c25-8ad0-549d496d2b3d",
-  };
-  const fact2 = {
-    "ns2:oszCode": "5709.000001",
-    "ns2:mszReceiver": {
-      "ns3:SNILS": "13951805880",
-      "ns4:FamilyName": "Иванов",
-      "ns4:FirstName": "Виктор",
-      "ns4:Patronymic": "Юрьевич",
-      "ns3:Gender": "Male",
-      "ns3:BirthDate": "2000-03-09+04:00",
-    },
-    "ns2:lmszId": "40f20235-5039-48fc-9971-6807bcaba920",
-    "ns2:categoryId": "a84f5dc6-1940-437a-b7f2-e60c64de1661",
-    "ns2:decisionDate": "2020-05-28+03:00",
-    "ns2:dateStart": "2020-06-08+03:00",
-    "ns2:needsCriteria": {
-      "ns2:usingSign": "false",
-    },
-    "ns2:assignmentInfo": {
-      "ns2:monetaryForm": {
-        "ns2:amount": "10162,00",
+    {
+      fact: {
+        "ns2:oszCode": "5709.000001",
+        "ns2:mszReceiver": {
+          "ns3:SNILS": "13951805880",
+          "ns4:FamilyName": "Иванов",
+          "ns4:FirstName": "Виктор",
+          "ns4:Patronymic": "Юрьевич",
+          "ns3:Gender": "Male",
+          "ns3:BirthDate": "2000-03-09+04:00",
+        },
+        "ns2:lmszId": "40f20235-5039-48fc-9971-6807bcaba920",
+        "ns2:categoryId": "a84f5dc6-1940-437a-b7f2-e60c64de1661",
+        "ns2:decisionDate": "2020-05-28+03:00",
+        "ns2:dateStart": "2020-06-08+03:00",
+        "ns2:needsCriteria": {
+          "ns2:usingSign": "false",
+        },
+        "ns2:assignmentInfo": {
+          "ns2:monetaryForm": {
+            "ns2:amount": "10162,00",
+          },
+        },
+        uuid: "ffd3d2bd-d939-4c25-8ad0-549d496d2b3d",
       },
     },
-    uuid: "ffd3d2bd-d939-4c25-8ad0-549d496d2b3d",
-  };
+  ];
 
-
-  json["ns6:data"].package.elements.push({ fact });
-  json["ns6:data"].package.elements.push({ fact2 });
-
+  json["ns6:data"].package.elements=elements;
+  console.log(json["ns6:data"].package.elements);
+  
   var options = { compact: true, ignoreComment: true, spaces: 4 };
-  var result = convert.json2xml(json, options);
+  var result = convert.js2xml(json, options);
   fs.writeFileSync("tmp/SomeXML.xml", result, (err) => {
     if (err) return console.log(err);
     console.log("Done");
   });
+  
 };
 
 App();

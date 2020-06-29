@@ -33,6 +33,30 @@
                 </ns2:assignmentInfo>
                 <uuid>ffd3d2bd-d939-4c25-8ad0-549d496d2b3d</uuid>
             </fact>
+            <fact>
+                <ns2:oszCode>5709.000001</ns2:oszCode>
+                <ns2:mszReceiver>
+                    <ns3:SNILS>13951805880</ns3:SNILS>
+                    <ns4:FamilyName>Иванов</ns4:FamilyName>
+                    <ns4:FirstName>Виктор</ns4:FirstName>
+                    <ns4:Patronymic>Юрьевич</ns4:Patronymic>
+                    <ns3:Gender>Male</ns3:Gender>
+                    <ns3:BirthDate>2000-03-09+04:00</ns3:BirthDate>
+                </ns2:mszReceiver>
+                <ns2:lmszId>40f20235-5039-48fc-9971-6807bcaba920</ns2:lmszId>
+                <ns2:categoryId>a84f5dc6-1940-437a-b7f2-e60c64de1661</ns2:categoryId>
+                <ns2:decisionDate>2020-05-28+03:00</ns2:decisionDate>
+                <ns2:dateStart>2020-06-08+03:00</ns2:dateStart>
+                <ns2:needsCriteria>
+                    <ns2:usingSign>false</ns2:usingSign>
+                </ns2:needsCriteria>
+                <ns2:assignmentInfo>
+                    <ns2:monetaryForm>
+                        <ns2:amount>10162,00</ns2:amount>
+                    </ns2:monetaryForm>
+                </ns2:assignmentInfo>
+                <uuid>ffd3d2bd-d939-4c25-8ad0-549d496d2b3d</uuid>
+            </fact>
         </elements>
     </package>
 </ns6:data>
