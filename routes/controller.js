@@ -6,6 +6,14 @@ const moment = require("moment");
 var convert = require("xml-js");
 const path = require("path");
 
+router.post("/test", (req,res) => {
+  let collection = req.body;
+  console.log(collection);
+  collection.forEach(item => console.log(item));
+  console.log(collection);
+  res.json("Done");
+})
+
 router.post("/", (req, res) => {
   //make id for package
   const packageId = uuidv4();
@@ -41,7 +49,9 @@ router.post("/", (req, res) => {
 
   try {
     //get collection
+
     const collection = req.body;
+    console.log(collection);
     collection.forEach((item) => {
       //make json for add
       const id = uuidv4();
