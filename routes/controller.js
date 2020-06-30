@@ -8,9 +8,9 @@ const path = require("path");
 
 router.post("/test", (req,res) => {
   let collection = req.body;
-  console.log(collection);
+
   collection.forEach(item => console.log(item));
-  console.log(collection);
+
   res.json("Done");
 })
 
@@ -51,13 +51,14 @@ router.post("/", (req, res) => {
     //get collection
 
     const collection = req.body;
-    console.log(collection);
+  
     collection.forEach((item) => {
       //make json for add
       const id = uuidv4();
       //get data from item
       const {
         msz,
+        category,
         snils,
         fam,
         name,
@@ -81,7 +82,7 @@ router.post("/", (req, res) => {
         },
         "ns2:lmszId": { _text: msz },
         "ns2:categoryId": {
-          _text: "a84f5dc6-1940-437a-b7f2-e60c64de1661",
+          _text: category,
         },
         "ns2:decisionDate": { _text: dec_date },
         "ns2:dateStart": { _text: date_start },
