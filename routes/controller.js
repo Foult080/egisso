@@ -6,13 +6,13 @@ const moment = require("moment");
 var convert = require("xml-js");
 const path = require("path");
 
-router.post("/test", (req,res) => {
+router.post("/test", (req, res) => {
   let collection = req.body;
 
-  collection.forEach(item => console.log(item));
+  collection.forEach((item) => console.log(item));
 
   res.json("Done");
-})
+});
 
 router.post("/", (req, res) => {
   //make id for package
@@ -51,7 +51,7 @@ router.post("/", (req, res) => {
     //get collection
 
     const collection = req.body;
-  
+
     collection.forEach((item) => {
       //make json for add
       const id = uuidv4();
@@ -101,21 +101,31 @@ router.post("/", (req, res) => {
     //convert json to xml
     var result = convert.json2xml(json, options);
     //create  file name
-    let fileName =
-      packageId.slice(0, 10) + "-" + moment().format("YYYY-MM-DD") + ".xml";
+    let fileName = moment().format("YYYY-MM-DD") + ".xml";
     //write data to file
     fs.writeFileSync("tmp/" + fileName, result, (err) => {
       if (err) return console.log(err);
       console.log("Done");
     });
+
     //send to the client
-    res.setHeader('Content-Type', 'text/xml', );
-    res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
+    res.setHeader("Content-Type", "blob");
+    res.setHeader("Content-Disposition", `attachment; filename=${fileName}`);
     res.sendFile(path.resolve("tmp", `${fileName}`));
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Ошибка сервера");
   }
+});
+
+router.get("/", (req, res) => {
+  //var file = fs.readFile("tmp/foo.xml", 'binary', );
+  var file = fs.readFileSync("tmp/foo.xml", { encoding: "utf-8" });
+  res.setHeader("Content-Length", 200);
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Content-Disposition", "attachment; filename=foo.xml");
+  res.write(file, "binary");
+  res.end();
 });
 
 module.exports = router;

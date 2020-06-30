@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Button, Form, Col } from "react-bootstrap";
+import { Button, Form, Col, Alert } from "react-bootstrap";
 import { addDoc } from "../actions/addDoc";
 
 var collection = [];
@@ -28,7 +28,7 @@ const initialDopState = {
 
 const AddDoc = () => {
   const [formData, setFormData] = useState(initialState);
-
+  const [show, setShow] = useState(false);
   const {
     msz,
     category,
@@ -51,13 +51,14 @@ const AddDoc = () => {
     e.preventDefault();
     collection.push(formData);
     console.log(collection);
-    setFormData({ ...initialDopState });
+    setFormData({ ...formData, ...initialDopState });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     addDoc({ collection });
-    console.log("DONE");
+    setShow(true);
+    collection = [];
   };
 
   return (
@@ -65,6 +66,19 @@ const AddDoc = () => {
       <div className="col-lg-8 col-md-8 col-sm-8 mx-auto">
         <h1 className="text-center my-4">Fucking EGISSO</h1>
         <hr />
+
+        {show ? (
+          <Fragment>
+            <Alert variant="success" onClose={() => setShow(false)} dismissible>
+              <Alert.Heading>
+                Документ успешно сформирован
+              </Alert.Heading>
+              <p>XML файл можно найти в папке: %egisso%/tmp/</p>
+            </Alert>
+          </Fragment>
+        ) : (
+          <Fragment></Fragment>
+        )}
 
         <Form>
           <Form.Group controlId="Form.ControlSelectMSZ">
@@ -182,25 +196,25 @@ const AddDoc = () => {
           </Form.Row>
 
           <Form.Row>
-          <Form.Group as={Col} controlId="formGridDec">
-            <Form.Label>Дата назначения</Form.Label>
-            <Form.Control
-              placeholder="2020-10-12"
-              name="dec_date"
-              value={dec_date}
-              onChange={onChange}
-            />
-          </Form.Group>
+            <Form.Group as={Col} controlId="formGridDec">
+              <Form.Label>Дата назначения</Form.Label>
+              <Form.Control
+                placeholder="2020-10-12"
+                name="dec_date"
+                value={dec_date}
+                onChange={onChange}
+              />
+            </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridStart">
-            <Form.Label>Дата выплаты</Form.Label>
-            <Form.Control
-              placeholder="2020-10-12"
-              name="date_start"
-              value={date_start}
-              onChange={onChange}
-            />
-          </Form.Group>
+            <Form.Group as={Col} controlId="formGridStart">
+              <Form.Label>Дата выплаты</Form.Label>
+              <Form.Control
+                placeholder="2020-10-12"
+                name="date_start"
+                value={date_start}
+                onChange={onChange}
+              />
+            </Form.Group>
           </Form.Row>
 
           <Form.Group controlId="formGridAmount">
@@ -212,25 +226,25 @@ const AddDoc = () => {
               onChange={onChange}
             />
           </Form.Group>
-          <Form.Row >
-            <Button variant="primary" type="submit" onClick={makeCollection}>
-              Добавить в коллекцию ({collection.length})
-            </Button>
-            <Button
-              className="ml-1"
-              variant="danger"
-              type="submit"
-              onClick={onSubmit}
-            >
-              Сформировать XML
-            </Button>
+          <Form.Row>
+            <Form.Group className="end-buttons">
+              <Button variant="primary" type="submit" onClick={makeCollection}>
+                Добавить в коллекцию ({collection.length})
+              </Button>
+              <Button
+                className="ml-1"
+                variant="danger"
+                type="submit"
+                onClick={onSubmit}
+              >
+                Сформировать XML
+              </Button>
+            </Form.Group>
           </Form.Row>
         </Form>
       </div>
     </Fragment>
   );
 };
-
-
 
 export default AddDoc;

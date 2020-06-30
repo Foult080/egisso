@@ -6,3 +6,7 @@ html {
   box-sizing: border-box;
 }
 
+.end-buttons {
+  margin-left: 21%;
+  margin-right: 21%;
+}
