@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "uuid": "^8.2.0",
     "xml-js": "^1.6.11"
   },
